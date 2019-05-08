@@ -85,7 +85,7 @@ update_project_versions() {
 
 update_changelog() {
     changelog_file="CHANGELOG.md"
-    text=$1
+    text="$1"
     sed -i.bck "2i\\
 $text
 " ${changelog_file}
@@ -126,8 +126,15 @@ do_changelog() {
         printf "Your new CHANGELOG entry is:\n\n${full_changelog}\n\n"
         read -p "continue? (y/n): " changelog_ready
     done
-    update_changelog ${full_changelog}
+    update_changelog "${full_changelog}"
 }
+
+cleanup() {
+    rm versions.sh
+    mvn clean
+    git status
+}
+
 
 #
 # automatically prepare the release version, if provided
@@ -198,3 +205,9 @@ update_pom_versions ${NEXT_VERSION}
 # update master to snapshot
 #
 do_update
+
+#
+# cleanup
+#
+
+cleanup
