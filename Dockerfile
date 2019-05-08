@@ -22,4 +22,4 @@ WORKDIR /opt/nuvlabox/
 
 VOLUME /srv/nuvlabox/shared
 
-ENTRYPOINT ["./api.py"]
+ENTRYPOINT ["./api.sh"]

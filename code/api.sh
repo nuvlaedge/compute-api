@@ -35,4 +35,4 @@ chmod -v 0444 ${DOCKER_TLS}/ca.pem ${DOCKER_TLS}/server-cert.pem ${DOCKER_TLS}/c
 
 cp ${DOCKER_TLS}/ca.pem ${DOCKER_TLS}/key.pem ${DOCKER_TLS}/cert.pem $SHARED
 
-socat OPENSSL-LISTEN:2375,reuseaddr,fork,cafile=ca.pem,key=server-key.pem,cert=server-cert.pem UNIX:/var/run/docker.sock
+socat OPENSSL-LISTEN:5000,reuseaddr,fork,cafile=ca.pem,key=server-key.pem,cert=server-cert.pem UNIX:/var/run/docker.sock
