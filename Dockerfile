@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.9.3
 
 ARG GIT_BRANCH
 ARG GIT_COMMIT_ID
@@ -14,7 +14,7 @@ LABEL git.build.time=${GIT_BUILD_TIME}
 LABEL travis.build.number=${TRAVIS_BUILD_NUMBER}
 LABEL travis.build.web.url=${TRAVIS_BUILD_WEB_URL}
 
-RUN apk update && apk --no-cache add openssl socat
+RUN apk update && apk --no-cache add openssl=1.1.1b-r1 socat=1.7.3.2-r5
 
 COPY code/ /opt/nuvlabox/
 
