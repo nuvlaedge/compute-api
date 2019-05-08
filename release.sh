@@ -88,7 +88,7 @@ update_changelog() {
     text=$1
     sed -i.bck "2i\\
 $text
-" $changelog_file
+" ${changelog_file}
 }
 
 do_changelog() {
@@ -102,7 +102,7 @@ do_changelog() {
         while true
         do
             read -p "added (empty line to stop writing): " newline
-            if [ -z $newline ]
+            if [[ -z $newline ]]
             then
                 break
             else
@@ -114,7 +114,7 @@ do_changelog() {
         while true
         do
             read -p "changed (empty line to stop writing): " newline
-            if [ -z $newline ]
+            if [[ -z $newline ]]
             then
                 break
             else
@@ -123,7 +123,7 @@ do_changelog() {
         done
 
         full_changelog="${release_headline}\n${added}\n${changed}"
-        printf "Your new CHANGELOG entry is:\n\n ${full_changelog}"
+        printf "Your new CHANGELOG entry is:\n\n${full_changelog}\n\n"
         read -p "continue? (y/n): " changelog_ready
     done
     update_changelog ${full_changelog}
@@ -133,7 +133,7 @@ do_changelog() {
 # automatically prepare the release version, if provided
 #
 
-if [ ! -z $VERSION ]
+if [[ ! -z $VERSION ]]
 then
     echo "INFO: updating project version to ${VERSION} before releasing"
     if [[ "${VERSION}" != *"-SNAPSHOT" ]]
