@@ -1,14 +1,14 @@
 version: "3.7"
 
 services:
-  agent:
+  compute-api:
     build: .
     ports:
       - 5000:5000
+    pid: "host"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - NUVLABOX_ID=<placeholder>
-      - HOST=$(hostname)
+      - HOST=${HOSTNAME}
 
 
