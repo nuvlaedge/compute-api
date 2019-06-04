@@ -1,7 +1,22 @@
 #!/bin/sh
 
-PASSPHRASE=$(openssl rand -base64 32)
+# The HOSTNAME and HOST_ADDRESSES **MUST** be set externally when
+# running within a container.  The default values from hostname from
+# within the container will be **INCORRECT**.
+
 HOSTNAME=${HOST:-`hostname`}
+HOST_ADDRESSES=${HOST_ADDRESSES:-`hostname -i`}
+
+LOCAL_ADDRESSES="127.0.0.1 0000:0000:0000:0000:0000:0000:0000:0001"
+HOST_ADDRESSES="${HOST_ADDRESSES} 127.0.0.1 0000:0000:0000:0000:0000:0000:0000:0001"
+
+SUBJECT_ALT_NAMES="DNS:${HOSTNAME}"
+for addr in $HOST_ADDRESSES; do
+    expended_addr=`ipv6calc -q --printfulluncompressed ${addr}`
+    $SUBJECT_ALT_NAMES="$SUBJECT_ALT_NAMES,IP:${expanded_addr}"
+done
+
+PASSPHRASE=$(openssl rand -base64 32)
 DOCKER_TLS=${DOCKER_TLS:-`pwd`}
 SHARED="/srv/nuvlabox/shared"
 
@@ -16,7 +31,7 @@ openssl req -new -x509 -days 365 -key ${DOCKER_TLS}/ca-key.pem -sha256 -out ${DO
 openssl genrsa -out ${DOCKER_TLS}/server-key.pem 4096
 openssl req -subj "/CN=$HOSTNAME" -sha256 -new -key ${DOCKER_TLS}/server-key.pem -out ${DOCKER_TLS}/server.csr
 
-echo subjectAltName = DNS:$HOSTNAME,IP:10.10.10.20,IP:127.0.0.1 > ${DOCKER_TLS}/extfile.cnf
+echo subjectAltName = ${SUBJECT_ALT_NAMES} > ${DOCKER_TLS}/extfile.cnf
 openssl x509 -req -days 365 -sha256 -in ${DOCKER_TLS}/server.csr -CA ${DOCKER_TLS}/ca.pem -CAkey ${DOCKER_TLS}/ca-key.pem \
     -CAcreateserial -out ${DOCKER_TLS}/server-cert.pem -extfile ${DOCKER_TLS}/extfile.cnf -passin pass:$PASSPHRASE
 
