@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.2.1] - 2019-06-04
+### Changed
+  - script to generate Docker TLS credentials now takes
+    two env. variables: HOSTNAME and HOST_ADDRESSES. 
+
 ## [0.2.0] - 2019-06-03
 ### Added
   - provide multi-architecture image
