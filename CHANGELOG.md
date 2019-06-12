@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.2.1] - 2019-06-12
+### Added
+  - build for arm platform
+
 ## [0.2.1] - 2019-06-04
 ### Changed
   - script to generate Docker TLS credentials now takes
