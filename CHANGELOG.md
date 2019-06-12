@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.2.1] - 2019-06-12
+## [0.2.2] - 2019-06-12
 ### Added
   - build for arm platform
 
