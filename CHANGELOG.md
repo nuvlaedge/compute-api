@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.2.3] - 2019-06-17
+### Added
+  - patched the api.sh to support persistence of TLS keys 
+  
 ## [0.2.2] - 2019-06-12
 ### Added
   - build for arm platform
