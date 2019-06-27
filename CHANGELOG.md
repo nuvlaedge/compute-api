@@ -1,4 +1,8 @@
 # Changelog
+## [0.2.4] - 2019-06-27
+### Added
+### Changed
+- renamed existing path for the certificates
 
 ## [0.2.3] - 2019-06-17
 ### Added
