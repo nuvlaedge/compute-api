@@ -54,7 +54,7 @@ then
     cp ${DOCKER_TLS}/*.pem ${SHARED}
     touch ${SHARED}/${SYNC_FILE}
 else
-    cp ${SHARED}/ca.pem ${SHARED}/key.pem ${SHARED}/cert.pem ${SHARED}/server_tls/*pem ${DOCKER_TLS}
+    cp ${SHARED}/ca.pem ${SHARED}/key.pem ${SHARED}/cert.pem ${SHARED}/*pem ${DOCKER_TLS}
 fi
 
 socat OPENSSL-LISTEN:5000,reuseaddr,fork,cafile=${DOCKER_TLS}/ca.pem,key=${DOCKER_TLS}/server-key.pem,cert=${DOCKER_TLS}/server-cert.pem UNIX:/var/run/docker.sock
