@@ -10,7 +10,7 @@ NuvlaBox API, which basically relays the host's Docker socket via TCP
 [![CI](https://img.shields.io/travis/com/nuvlabox/compute-api?style=for-the-badge&logo=travis-ci&logoColor=white)](https://travis-ci.com/nuvlabox/compute-api)
 [![GitHub issues](https://img.shields.io/github/issues/nuvlabox/compute-api?style=for-the-badge&logo=github&logoColor=white)](https://GitHub.com/nuvlabox/compute-api/issues/)
 [![Docker pulls](https://img.shields.io/docker/pulls/nuvlabox/compute-api?style=for-the-badge&logo=Docker&logoColor=white)](https://cloud.docker.com/u/nuvlabox/repository/docker/nuvlabox/compute-api)
-[![Docker image size](https://img.shields.io/microbadger/image-size/nuvlabox/compute-api?style=for-the-badge&logo=Docker&logoColor=white)](https://cloud.docker.com/u/nuvlabox/repository/docker/nuvlabox/compute-api)
+[![Docker image size](https://img.shields.io/microbadger/image-size/nuvlabox/compute-api?style=for-the-badge&logo=docker&logoColor=white)](https://cloud.docker.com/u/nuvlabox/repository/docker/nuvlabox/compute-api)
 
 ![logo](https://uc977612ad25e6fb53ac9275cd4c.previews.dropboxusercontent.com/p/thumb/AAhLDh0-m61kGliju2bmLxVEc36VssSKVjGd9r6JnxmpdVExwfKsZWXtVtc2gz0IR1PN7tviqaJJY3YSXHZhxTwO1x_8bHHt3W49SZDgrMqPW84Jw9vg-Dmv_2J4siLp44GvufcOPr8Rw96xIGfG1JIm_xrADjdl0tpgW8LrJnojoMl5l7hCs0cNLMQm54P_QH8hhg5cc8Nkvk2M5F5YBp4MM5M62AMQXZRihBz4QsbvHeVNIj3Z8lI-gbcY9rYjiQmLYeAdP_REq2eEYcrADrMHHI6oJRuFQAAzrEPcyc6_3KQzMENiGflpKZAE2BcAJAJ956KodJjixpH8PPC_3sGlhijEZ2LTE_jwb00-znmVRV-BYNr8MO16HCZIBQeRgSc/p.png?fv_content=true&size_mode=5)
 
