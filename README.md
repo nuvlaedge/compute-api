@@ -1,7 +1,3 @@
-# api
-NuvlaBox API, which basically relays the host's Docker socket via TCP
-
-
 # NuvlaBox Compute API
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/nuvlabox/compute-api/graphs/commit-activity)
