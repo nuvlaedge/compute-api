@@ -1,4 +1,8 @@
 # Changelog
+## [0.2.5] - 2019-11-19
+### Added
+### Changed
+- update pkgs versions
 ## [0.2.4] - 2019-06-27
 ### Added
 ### Changed
