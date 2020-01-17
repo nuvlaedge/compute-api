@@ -14,7 +14,7 @@ LABEL git.build.time=${GIT_BUILD_TIME}
 LABEL travis.build.number=${TRAVIS_BUILD_NUMBER}
 LABEL travis.build.web.url=${TRAVIS_BUILD_WEB_URL}
 
-RUN apk update && apk --no-cache add openssl=1.1.1d-r0 socat=1.7.3.2-r5
+RUN apk update && apk --no-cache add openssl=1.1.1d-r2 socat=1.7.3.2-r5
 
 COPY code/ /opt/nuvlabox/
 
