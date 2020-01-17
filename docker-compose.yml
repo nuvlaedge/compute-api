@@ -9,6 +9,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - HOST=${HOSTNAME}
+      - HOST=${HOSTNAME:-nuvlabox}
 
 
