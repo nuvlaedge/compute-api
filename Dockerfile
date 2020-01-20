@@ -22,4 +22,6 @@ WORKDIR /opt/nuvlabox/
 
 VOLUME /srv/nuvlabox/shared
 
+EXPOSE 5000/tcp
+
 ENTRYPOINT ["./api.sh"]
