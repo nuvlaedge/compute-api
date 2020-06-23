@@ -5,7 +5,7 @@ install:
 - curl -sL -o ${HADOLINT} "https://github.com/hadolint/hadolint/releases/download/v1.16.0/hadolint-$(uname -s)-$(uname -m)" && chmod 700 ${HADOLINT}
 deploy:
   provider: script
-  script: "${HADOLINT} Dockerfile && mvn deploy"
+  script: "${HADOLINT} --ignore DL3018 Dockerfile && mvn deploy"
   skip_cleanup: true
   on:
     all_branches: true
