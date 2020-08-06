@@ -29,13 +29,13 @@ rm -fr ${RANDFILE} || echo "INFO: openssl .RND file doesn't exist yet"
 if [[ ! -f ${SHARED}/${SYNC_FILE} ]]
 then
     openssl genrsa -aes256 -out ${DOCKER_TLS}/ca-key.pem -passout pass:$PASSPHRASE 4096
-    openssl req -new -x509 -days 365 -key ${DOCKER_TLS}/ca-key.pem -sha256 -out ${DOCKER_TLS}/ca.pem \
+    openssl req -new -x509 -days 90 -key ${DOCKER_TLS}/ca-key.pem -sha256 -out ${DOCKER_TLS}/ca.pem \
         -passin pass:${PASSPHRASE} -subj "/C=CH/L=Geneva/O=SixSq/CN=$HOSTNAME"
     openssl genrsa -out ${DOCKER_TLS}/server-key.pem 4096
     openssl req -subj "/CN=$HOSTNAME" -sha256 -new -key ${DOCKER_TLS}/server-key.pem -out ${DOCKER_TLS}/server.csr
 
     echo subjectAltName = ${SUBJECT_ALT_NAMES} > ${DOCKER_TLS}/extfile.cnf
-    openssl x509 -req -days 365 -sha256 -in ${DOCKER_TLS}/server.csr -CA ${DOCKER_TLS}/ca.pem -CAkey ${DOCKER_TLS}/ca-key.pem \
+    openssl x509 -req -days 90 -sha256 -in ${DOCKER_TLS}/server.csr -CA ${DOCKER_TLS}/ca.pem -CAkey ${DOCKER_TLS}/ca-key.pem \
         -CAcreateserial -out ${DOCKER_TLS}/server-cert.pem -extfile ${DOCKER_TLS}/extfile.cnf -passin pass:${PASSPHRASE}
 
     # Generate client credentials
@@ -43,7 +43,7 @@ then
     openssl req -subj '/CN=client' -new -key ${DOCKER_TLS}/key.pem -out ${DOCKER_TLS}/client.csr
 
     echo extendedKeyUsage = clientAuth > ${DOCKER_TLS}/extfile.cnf
-    openssl x509 -req -days 365 -sha256 -in ${DOCKER_TLS}/client.csr -CA ${DOCKER_TLS}/ca.pem -CAkey ${DOCKER_TLS}/ca-key.pem \
+    openssl x509 -req -days 90 -sha256 -in ${DOCKER_TLS}/client.csr -CA ${DOCKER_TLS}/ca.pem -CAkey ${DOCKER_TLS}/ca-key.pem \
         -CAcreateserial -out ${DOCKER_TLS}/cert.pem -extfile ${DOCKER_TLS}/extfile.cnf -passin pass:${PASSPHRASE}
 
     # cleanup
