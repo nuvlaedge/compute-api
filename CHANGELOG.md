@@ -4,11 +4,6 @@
 - container name to deployment
 ### Changed
 - certificates expiration date to 3 months
-## [1.0.0] - 2020-08-06
-### Added 
-- container name to deployment
-### Changed
-- certificates expiration date to 3 months
 ## [0.2.5] - 2019-11-19
 ### Added
 ### Changed
