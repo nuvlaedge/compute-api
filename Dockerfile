@@ -16,10 +16,12 @@ LABEL travis.build.web.url=${TRAVIS_BUILD_WEB_URL}
 
 RUN apk update && apk --no-cache add openssl socat
 
-COPY code/ /opt/nuvlabox/
+COPY code/ LICENSE /opt/nuvlabox/
 
 WORKDIR /opt/nuvlabox/
 
 VOLUME /srv/nuvlabox/shared
+
+ONBUILD RUN ./license.sh
 
 ENTRYPOINT ["./api.sh"]
