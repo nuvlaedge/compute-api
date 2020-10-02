@@ -1,4 +1,8 @@
 # Changelog
+## [1.0.1] - 2020-10-02
+### Added 
+- ONBUILD SixSq license dump
+### Changed
 ## [1.0.0] - 2020-08-06
 ### Added 
 - container name to deployment
