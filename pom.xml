@@ -6,7 +6,7 @@
     <groupId>sixsq.nuvlabox.compute-api</groupId>
     <artifactId>compute-api</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <name>compute-api</name>
     <url>http://sixsq.com/</url>
 
