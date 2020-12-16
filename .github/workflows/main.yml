@@ -18,9 +18,6 @@ jobs:
 
       - name: Build and deploy on architecture
         env:
-          TRAVIS_BRANCH: ${{ steps.extract_branch.outputs.branch }}
-          TRAVIS_PULL_REQUEST_BRANCH: ${{ github.head_ref }}
-          TRAVIS_BUILD_NUMBER: ${{ github.run_id }}
           DOCKER_USERNAME: ${{ secrets.SIXSQ_DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.SIXSQ_DOCKER_PASSWORD }}
         run: ./container-release.sh

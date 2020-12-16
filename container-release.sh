@@ -7,12 +7,10 @@ DOCKER_IMAGE=compute-api
 
 # default env vars in GH actions
 GIT_BRANCH=$(echo ${GITHUB_REF} | awk -F'/' '{print $(NF)}' | sed -e 's/[^a-z0-9\._-]/-/g')
-if [[ "${GIT_BRANCH}" != "master" ]] && [[ "${GIT_BRANCH}" != "main" ]]
-then
-  DOCKER_ORG=nuvladev
-else
-  DOCKER_ORG=nuvlabox
-fi
+
+# non-tagged builds are not releases, so they always go on nuvladev
+DOCKER_ORG=${DOCKER_ORG:-nuvladev}
+
 MANIFEST=${DOCKER_ORG}/${DOCKER_IMAGE}:${GIT_BRANCH}
 
 platforms=(amd64 arm64 arm)
