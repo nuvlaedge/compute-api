@@ -11,10 +11,8 @@ LOCAL_ADDRESSES="127.0.0.1 0000:0000:0000:0000:0000:0000:0000:0001"
 HOST_ADDRESSES="${HOST_ADDRESSES} 127.0.0.1 0000:0000:0000:0000:0000:0000:0000:0001"
 
 SUBJECT_ALT_NAMES="DNS:${HOSTNAME}"
-for addr in $HOST_ADDRESSES; do
-    expended_addr=`ipv6calc -q --printfulluncompressed ${addr}`
-    $SUBJECT_ALT_NAMES="$SUBJECT_ALT_NAMES,IP:${expanded_addr}"
-done
+
+echo "INFO: SAN=${SUBJECT_ALT_NAMES}"
 
 PASSPHRASE=$(openssl rand -base64 32)
 DOCKER_TLS=${DOCKER_TLS:-`pwd`}
@@ -28,6 +26,7 @@ rm -fr ${RANDFILE} || echo "INFO: openssl .RND file doesn't exist yet"
 
 if [[ ! -f ${SHARED}/${SYNC_FILE} ]]
 then
+    echo "INFO: file ${SHARED}/${SYNC_FILE} does not exist. Generating new TLS certificates..."
     openssl genrsa -aes256 -out ${DOCKER_TLS}/ca-key.pem -passout pass:$PASSPHRASE 4096
     openssl req -new -x509 -days 90 -key ${DOCKER_TLS}/ca-key.pem -sha256 -out ${DOCKER_TLS}/ca.pem \
         -passin pass:${PASSPHRASE} -subj "/C=CH/L=Geneva/O=SixSq/CN=$HOSTNAME"
@@ -54,7 +53,11 @@ then
     cp ${DOCKER_TLS}/*.pem ${SHARED}
     touch ${SHARED}/${SYNC_FILE}
 else
+    echo "INFO: re-using existing certificates from ${SHARED}: \n$(ls ${SHARED}/*pem)"
     cp ${SHARED}/ca.pem ${SHARED}/key.pem ${SHARED}/cert.pem ${SHARED}/*pem ${DOCKER_TLS}
 fi
 
-socat OPENSSL-LISTEN:5000,reuseaddr,fork,cafile=${DOCKER_TLS}/ca.pem,key=${DOCKER_TLS}/server-key.pem,cert=${DOCKER_TLS}/server-cert.pem UNIX:/var/run/docker.sock
+echo "INFO: starting the compute API relay"
+
+set -x
+socat -lh OPENSSL-LISTEN:5000,reuseaddr,fork,cafile=${DOCKER_TLS}/ca.pem,key=${DOCKER_TLS}/server-key.pem,cert=${DOCKER_TLS}/server-cert.pem UNIX:/var/run/docker.sock
