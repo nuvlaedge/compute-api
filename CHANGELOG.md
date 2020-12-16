@@ -1,4 +1,10 @@
 # Changelog
+## [1.1.0] - 2020-12-16
+        ### Added 
+                  - extra logging 
+                  - healthcheck
+        ### Changed
+                  - suppressed ipv6calc
 ## [1.0.1] - 2020-10-02
 ### Added 
 - ONBUILD SixSq license dump
