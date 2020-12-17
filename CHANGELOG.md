@@ -1,4 +1,9 @@
 # Changelog
+## [1.1.1] - 2020-12-17
+        ### Added 
+                  - logging and healthchecks
+        ### Changed
+                  - improved CI process
 ## [1.1.0] - 2020-12-16
         ### Added 
                   - extra logging 
