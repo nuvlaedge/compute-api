@@ -1,15 +1,15 @@
 # Changelog
 ## [1.1.1] - 2020-12-17
-        ### Added 
-                  - logging and healthchecks
-        ### Changed
-                  - improved CI process
+### Added 
+- logging and healthchecks
+### Changed
+- improved CI process
 ## [1.1.0] - 2020-12-16
-        ### Added 
-                  - extra logging 
-                  - healthcheck
-        ### Changed
-                  - suppressed ipv6calc
+### Added 
+- extra logging 
+- healthcheck
+### Changed
+- suppressed ipv6calc
 ## [1.0.1] - 2020-10-02
 ### Added 
 - ONBUILD SixSq license dump
@@ -26,11 +26,11 @@
 ## [0.2.4] - 2019-06-27
 ### Added
 ### Changed
-- - renamed existing path for the certificates
+- renamed existing path for the certificates
 
 ## [0.2.3] - 2019-06-17
 ### Added
-  - patched the api.sh to support persistence of TLS keys 
+- patched the api.sh to support persistence of TLS keys 
   
 ## [0.2.2] - 2019-06-12
 ### Added
