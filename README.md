@@ -3,7 +3,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/nuvlabox/compute-api/graphs/commit-activity)
 [![GitHub issues](https://img.shields.io/github/issues/nuvlabox/compute-api?style=for-the-badge&logo=github&logoColor=white)](https://GitHub.com/nuvlabox/compute-api/issues/)
 [![Docker pulls](https://img.shields.io/docker/pulls/nuvlabox/compute-api?style=for-the-badge&logo=Docker&logoColor=white)](https://cloud.docker.com/u/nuvlabox/repository/docker/nuvlabox/compute-api)
-[![Docker image size](https://img.shields.io/microbadger/image-size/nuvlabox/compute-api?style=for-the-badge&logo=docker&logoColor=white)](https://cloud.docker.com/u/nuvlabox/repository/docker/nuvlabox/compute-api)
+[![Docker image size](https://img.shields.io/docker/image-size/nuvladev/compute-api/master?logo=docker&logoColor=white&style=for-the-badge)](https://cloud.docker.com/u/nuvlabox/repository/docker/nuvlabox/compute-api)
 
 ![CI Build](https://github.com/nuvlabox/compute-api/actions/workflows/main.yml/badge.svg)
 ![CI Release](https://github.com/nuvlabox/compute-api/actions/workflows/release.yml/badge.svg)
