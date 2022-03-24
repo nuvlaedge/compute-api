@@ -1,4 +1,8 @@
 # Changelog
+## [1.1.2] - 2022-03-24
+### Added 
+ - Add org.opencontainers labels
+### Changed
 ## [1.1.1] - 2020-12-17
 ### Added 
 - logging and healthchecks
