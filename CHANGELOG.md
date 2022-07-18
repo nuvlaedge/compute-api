@@ -1,4 +1,8 @@
 # Changelog
+## [1.2.0] - 2022-07-18
+### Added
+### Changed
+ - Use common base image for all NE components
 ## Unreleased
 ### Changed
 - Changed Dockerfile base image to match NE common
