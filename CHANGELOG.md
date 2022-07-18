@@ -3,9 +3,7 @@
 ### Added
 ### Changed
  - Use common base image for all NE components
-## Unreleased
-### Changed
-- Changed Dockerfile base image to match NE common
+ - Changed Dockerfile base image to match NE common
 ## [1.1.2] - 2022-03-24
 ### Added 
  - Add org.opencontainers labels
