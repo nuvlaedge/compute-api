@@ -17,16 +17,16 @@ LABEL org.opencontainers.image.authors="support@sixsq.com"
 LABEL org.opencontainers.image.created=${GIT_BUILD_TIME}
 LABEL org.opencontainers.image.url=${PROJECT_URL}
 LABEL org.opencontainers.image.vendor="SixSq SA"
-LABEL org.opencontainers.image.title="NuvlaBox Compute API"
+LABEL org.opencontainers.image.title="NuvlaEdge Compute API"
 LABEL org.opencontainers.image.description="Provides a secure compute API for Nuvla to orchestrate applications"
 
 RUN apk update && apk --no-cache add openssl socat
 
-COPY code/ LICENSE /opt/nuvlabox/
+COPY code/ LICENSE /opt/nuvlaedge/
 
-WORKDIR /opt/nuvlabox/
+WORKDIR /opt/nuvlaedge/
 
-VOLUME /srv/nuvlabox/shared
+VOLUME /srv/nuvlaedge/shared
 
 ONBUILD RUN ./license.sh
 

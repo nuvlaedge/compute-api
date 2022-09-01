@@ -11,11 +11,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - HOST=${HOSTNAME:-nuvlabox}
+      - HOST=${HOSTNAME:-nuvlaedge}
     healthcheck:
       test: netstat -tulpn | grep LISTEN | grep 5000 | grep socat
       interval: 20s
       timeout: 10s
       start_period: 30s
-
-
