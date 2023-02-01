@@ -2,7 +2,7 @@ name: "Compute-API Validation"
 
 on:
   workflow_run:
-    workflows: [BUILD]
+    workflows: ["BUILD", "NuvlaEdge Component Build"]
     types:
       - completed
   workflow_dispatch:
