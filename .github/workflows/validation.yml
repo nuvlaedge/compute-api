@@ -1,17 +1,23 @@
-name: "Compute-API Validation"
+name: "Validation"
 
 on:
-  workflow_run:
-    workflows: ["BUILD", "NuvlaEdge Component Build"]
-    types:
-      - completed
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    types: [ready_for_review]
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
 env:
-  VALIDATION_PACKAGE_NAME: ${{ vars.VALIDATION_PACKAGE_NAME }}
+  VALIDATION_PACKAGE_NAME: "validation-latest-py3-none-any.whl"
   BRANCH_NAME: ${{ github.head_ref || github.ref_name || vars.GITHUB_REF_NAME }}
 
 jobs:
+
   setup-matrix:
     runs-on: ubuntu-latest
     outputs:
@@ -26,15 +32,14 @@ jobs:
         run: |
           echo "tests=${{ vars.VALIDATION_TESTS }}" >> $GITHUB_OUTPUT
 
-  validate-release:
+  run-validator:
     needs: setup-matrix
     strategy:
       matrix:
         board-config: ${{ fromJSON(needs.setup-matrix.outputs.boards) }}
         validation-type: ${{ fromJSON(needs.setup-matrix.outputs.tests) }}
+      fail-fast: false
     runs-on: ${{ matrix.board-config }}
-
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: CheckOut validation packages
@@ -53,10 +58,10 @@ jobs:
       - name: Setup Python environment
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10.8'
+          python-version: '3.10'
 
       - name: Install Validation Framework dependency
-        run: pip install ${{ env.VALIDATION_PACKAGE_NAME }}  --force-reinstall
+        run: python -m pip install ${{ env.VALIDATION_PACKAGE_NAME }}  --force-reinstall
 
       - name: Setup results folder
         run: |
