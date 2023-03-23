@@ -60,4 +60,4 @@ fi
 echo "INFO: starting the compute API relay"
 
 set -x
-socat -lh OPENSSL-LISTEN:5000,reuseaddr,fork,cafile=${DOCKER_TLS}/ca.pem,key=${DOCKER_TLS}/server-key.pem,cert=${DOCKER_TLS}/server-cert.pem UNIX:/var/run/docker.sock
+exec socat -lh OPENSSL-LISTEN:5000,reuseaddr,fork,cafile=${DOCKER_TLS}/ca.pem,key=${DOCKER_TLS}/server-key.pem,cert=${DOCKER_TLS}/server-cert.pem UNIX:/var/run/docker.sock
